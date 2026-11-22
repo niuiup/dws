@@ -1,0 +1,8 @@
+{
+  "servers": {
+    "dwsim": {
+      "type": "http",
+      "url": "http://localhost:5901/mcp"
+    }
+  }
+}

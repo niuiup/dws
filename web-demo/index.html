@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#111318">
+    <meta name="description" content="Интерактивная демонстрация концепции разделения MEG, DEG и TEG в колонне с разделительной стенкой.">
+    <title>DWC Digital Twin — Demo</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js" defer></script>
+    <script src="js/calculation.js" defer></script>
+    <script src="js/visualization.js" defer></script>
+    <script src="js/main.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="./" aria-label="DWC Digital Twin — Demo, главная">
+        <span class="brand-mark" aria-hidden="true">DWC</span>
+        <span class="brand-name">Digital Twin <span>· DEMO</span></span>
+      </a>
+      <span class="header-note"><span class="status-dot"></span> Концептуальная модель</span>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">DIVIDING WALL COLUMN · CONCEPT</p>
+          <h1>DWC Digital Twin <span>— Demo</span></h1>
+          <p class="hero-subtitle">Демонстратор концепции колонны с разделительной стенкой</p>
+          <p class="hero-description">
+            Посмотрите, как одна колонна может разделять смесь MEG, DEG и TEG на три продукта,
+            и оцените потенциальную экономию ресурсов.
+          </p>
+          <a class="button button-primary" href="#calculator">Рассчитать пример <span aria-hidden="true">↓</span></a>
+        </div>
+        <div class="hero-stat" aria-label="Ориентировочная экономия энергии до 30 процентов">
+          <span class="stat-ring" aria-hidden="true"><strong>~30<small>%</small></strong></span>
+          <span class="stat-caption">потенциал экономии<br>энергии*</span>
+          <span class="stat-footnote">*Ориентир из литературы</span>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="schematic-heading">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">01 / СХЕМА ПРОЦЕССА</p>
+            <h2 id="schematic-heading">Одна колонна. Три продукта.</h2>
+          </div>
+          <p class="section-intro">Наведите курсор или выберите поток, чтобы увидеть его оценку.</p>
+        </div>
+        <div class="panel schematic-panel">
+          <div class="schematic-wrap">
+            <svg class="column-diagram" viewBox="0 0 760 430" role="group" aria-labelledby="diagram-title diagram-description">
+              <title id="diagram-title">Схема колонны с разделительной стенкой</title>
+              <desc id="diagram-description">Подача смеси входит слева. MEG выходит сверху, DEG сбоку, TEG снизу. Внутри колонны показана вертикальная разделительная стенка.</desc>
+              <defs>
+                <linearGradient id="columnFill" x1="0" x2="1">
+                  <stop offset="0" stop-color="#1b2028"/>
+                  <stop offset=".5" stop-color="#272d37"/>
+                  <stop offset="1" stop-color="#1b2028"/>
+                </linearGradient>
+                <marker id="arrow-feed" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#8b96a8"/></marker>
+                <marker id="arrow-meg" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 10 5 0 10z" fill="#ffd54f"/></marker>
+                <marker id="arrow-deg" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 10 5 0 10z" fill="#54d6bd"/></marker>
+                <marker id="arrow-teg" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 10 5 0 10z" fill="#ad91ff"/></marker>
+              </defs>
+
+              <g class="stream stream-feed" data-stream="feed" tabindex="0" role="button" aria-label="Подача смеси MEG, DEG и TEG">
+                <path class="pipe" d="M28 211H220" marker-end="url(#arrow-feed)"/>
+                <text class="stream-label" x="30" y="188">ПОДАЧА</text>
+                <text class="stream-detail" x="30" y="232">MEG · DEG · TEG</text>
+              </g>
+
+              <path class="column-shell" d="M235 100 Q235 76 259 76 H491 Q515 76 515 100 V328 Q515 352 491 352 H259 Q235 352 235 328Z"/>
+              <path class="tray-line" d="M250 135H500 M250 174H500 M250 213H500 M250 252H500 M250 291H500"/>
+              <path class="wall" d="M375 150V318"/>
+              <text class="wall-label" x="386" y="239">РАЗДЕЛИТЕЛЬНАЯ</text>
+              <text class="wall-label" x="386" y="255">СТЕНКА</text>
+
+              <path class="internal-flow flow-meg" d="M300 202V111H375V91" marker-end="url(#arrow-meg)"/>
+              <path class="internal-flow flow-deg" d="M375 231H480V211H542" marker-end="url(#arrow-deg)"/>
+              <path class="internal-flow flow-teg" d="M440 271V322H375V380" marker-end="url(#arrow-teg)"/>
+
+              <g class="stream stream-meg" data-stream="MEG" tabindex="0" role="button" aria-label="Верхний продукт MEG">
+                <path class="pipe product-pipe" d="M375 91V31" marker-end="url(#arrow-meg)"/>
+                <text class="product-label" x="397" y="45">MEG</text>
+                <text class="product-position" x="397" y="63">ВЕРХНИЙ ПРОДУКТ</text>
+              </g>
+              <g class="stream stream-deg" data-stream="DEG" tabindex="0" role="button" aria-label="Боковой продукт DEG">
+                <path class="pipe product-pipe" d="M542 211H690" marker-end="url(#arrow-deg)"/>
+                <text class="product-label" x="576" y="188">DEG</text>
+                <text class="product-position" x="576" y="237">БОКОВОЙ ПРОДУКТ</text>
+              </g>
+              <g class="stream stream-teg" data-stream="TEG" tabindex="0" role="button" aria-label="Нижний продукт TEG">
+                <path class="pipe product-pipe" d="M375 380V414" marker-end="url(#arrow-teg)"/>
+                <text class="product-label" x="397" y="393">TEG</text>
+                <text class="product-position" x="397" y="411">НИЖНИЙ ПРОДУКТ</text>
+              </g>
+            </svg>
+          </div>
+          <div class="stream-info" id="stream-info" aria-live="polite">
+            <span class="info-icon" aria-hidden="true">i</span>
+            <p>Выберите поток на схеме — здесь появится его расчётная оценка.</p>
+          </div>
+          <div class="legend" aria-label="Обозначения">
+            <span><i class="legend-dot meg"></i> MEG — моноэтиленгликоль</span>
+            <span><i class="legend-dot deg"></i> DEG — диэтиленгликоль</span>
+            <span><i class="legend-dot teg"></i> TEG — триэтиленгликоль</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="comparison-heading">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">02 / ПОТЕНЦИАЛ ЭФФЕКТИВНОСТИ</p>
+            <h2 id="comparison-heading">Меньше оборудования — меньше затрат.</h2>
+          </div>
+          <p class="section-intro">Иллюстративное сравнение с традиционной двухколонной схемой.</p>
+        </div>
+        <div class="panel chart-panel">
+          <div class="chart-wrap">
+            <canvas id="comparison-chart" role="img" aria-label="Сравнение относительных энергозатрат и капитальных затрат"></canvas>
+            <p class="chart-fallback" id="chart-fallback" hidden>График недоступен. Традиционная схема: 100% энергозатрат и капитальных затрат. DWC: ориентировочно 70% и 75% соответственно.</p>
+          </div>
+          <div class="chart-note"><span aria-hidden="true">↗</span> Ориентировочные значения: около 30% экономии энергии и 25% капитальных затрат. Приблизительные отраслевые оценки на основе литературы, не гарантия для конкретного проекта.</div>
+        </div>
+      </section>
+
+      <section class="section calculator-section" id="calculator" aria-labelledby="calculator-heading">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">03 / ИНТЕРАКТИЧЕСКИЙ РАСЧЁТ</p>
+            <h2 id="calculator-heading">Оцените свой пример.</h2>
+          </div>
+          <p class="section-intro">Измените параметры подачи и посмотрите, как меняется оценка.</p>
+        </div>
+
+        <form class="panel calculator-panel" id="calculator-form">
+          <div class="input-column">
+            <h3>Параметры подачи</h3>
+            <label class="field-label" for="feed-flow">Расход подачи <span>кг/ч</span></label>
+            <input id="feed-flow" name="feedFlow" type="number" min="0.01" step="any" value="1000" required>
+            <span class="field-help">Общий массовый расход смеси</span>
+
+            <h3 class="subheading">Состав подачи</h3>
+            <div class="composition-grid">
+              <label class="field-label" for="feed-meg">MEG <span>мас. %</span></label>
+              <input id="feed-meg" name="meg" type="number" min="0" max="100" step="any" value="34" required>
+              <label class="field-label" for="feed-deg">DEG <span>мас. %</span></label>
+              <input id="feed-deg" name="deg" type="number" min="0" max="100" step="any" value="33" required>
+              <label class="field-label" for="feed-teg">TEG <span>мас. %</span></label>
+              <input id="feed-teg" name="teg" type="number" min="0" max="100" step="any" value="33" required>
+            </div>
+            <p class="composition-total" id="composition-total">Сумма состава: 100%</p>
+
+            <h3 class="subheading">Целевая чистота продуктов</h3>
+            <div class="purity-grid">
+              <label class="field-label" for="purity-meg">MEG <span>мас. %</span></label>
+              <input id="purity-meg" name="purityMeg" type="number" min="1" max="100" step="any" value="99.8" required>
+              <label class="field-label" for="purity-deg">DEG <span>мас. %</span></label>
+              <input id="purity-deg" name="purityDeg" type="number" min="1" max="100" step="any" value="99.5" required>
+              <label class="field-label" for="purity-teg">TEG <span>мас. %</span></label>
+              <input id="purity-teg" name="purityTeg" type="number" min="1" max="100" step="any" value="98.5" required>
+            </div>
+            <button class="button button-primary calculate-button" type="submit">Рассчитать оценку <span aria-hidden="true">→</span></button>
+            <p class="form-error" id="form-error" role="alert" hidden></p>
+          </div>
+
+          <div class="results-column">
+            <div class="results-title">
+              <div><p class="eyebrow">РЕЗУЛЬТАТ</p><h3>Оценка разделения</h3></div>
+              <span class="result-badge">Упрощённо</span>
+            </div>
+            <div class="product-results" id="product-results" aria-live="polite"></div>
+            <p class="disclaimer"><strong>Важно.</strong> Это упрощённый материальный баланс для демонстрации, а не строгая термодинамическая симуляция. Принято извлечение 98% целевого компонента; целевая чистота используется для оценки потока продукта и примесей.</p>
+
+            <div class="energy-card">
+              <div class="energy-heading">
+                <div><p class="eyebrow">ПОТЕНЦИАЛЬНАЯ ЭКОНОМИЯ</p><h3>Энергия и стоимость</h3></div>
+                <span class="energy-icon" aria-hidden="true">↘</span>
+              </div>
+              <div class="energy-values">
+                <div><strong id="energy-saved">—</strong><span>кВт мощности*</span></div>
+                <div><strong id="annual-savings">—</strong><span>₽ в год</span></div>
+              </div>
+              <div class="price-field">
+                <label for="electricity-price">Цена электроэнергии</label>
+                <div class="price-input"><input id="electricity-price" name="electricityPrice" type="number" min="0" step="any" value="5" required><span>₽/кВт·ч</span></div>
+              </div>
+              <p class="energy-assumption">*Оценка по условной базовой энергоёмкости 0,5 кВт·ч на кг подачи и экономии 30%. Это ориентир, а не проектная оценка.</p>
+            </div>
+          </div>
+        </form>
+
+        <div class="report-row">
+          <p>Сформируйте краткое резюме текущих параметров и оценок.</p>
+          <button class="button button-secondary" id="report-button" type="button">Сформировать отчёт <span aria-hidden="true">↗</span></button>
+        </div>
+        <div class="report-output panel" id="report-output" hidden>
+          <div class="report-header"><h3>Отчёт по демонстрационному расчёту</h3><button class="text-button" id="download-report" type="button">Скачать .txt ↓</button></div>
+          <pre id="report-text"></pre>
+        </div>
+      </section>
+
+      <section class="advantages" aria-label="Преимущества DWC">
+        <div><span class="advantage-number">01</span><strong>Меньше оборудования</strong><p>Несколько операций разделения объединены в одном аппарате.</p></div>
+        <div><span class="advantage-number">02</span><strong>Потенциал экономии</strong><p>Возможное снижение энергопотребления и капитальных затрат.</p></div>
+        <div><span class="advantage-number">03</span><strong>Компактный процесс</strong><p>Меньше занимаемая площадь по сравнению с несколькими колоннами.</p></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>DWC Digital Twin — Demo</span>
+      <span>Концептуальная демонстрация · Не для проектирования</span>
+    </footer>
+  </body>
+</html>

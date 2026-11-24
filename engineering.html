@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111318">
+  <title>DWC Engineering Workspace</title>
+  <link rel="stylesheet" href="css/workspace.css">
+  <script src="js/engineering.js" defer></script>
+</head>
+<body>
+  <aside class="sidebar">
+    <a class="brand" href="engineering.html"><span>DWC</span><strong>Engineering<br>Workspace</strong></a>
+    <nav aria-label="Разделы инженерного кабинета">
+      <a href="#passport" class="active">Паспорт проекта</a>
+      <a href="#inputs">Исходные данные</a>
+      <a href="#traditional">Традиционная схема</a>
+      <a href="#dwc">Модель DWC</a>
+      <a href="#comparison">Сравнение результатов</a>
+      <a href="#economics">Экономический эффект</a>
+      <a href="#construction">Конструкция колонны</a>
+      <a href="#roadmap">План реализации</a>
+      <a href="#reports">Результаты и отчёты</a>
+    </nav>
+    <a class="demo-link" href="index.html">← Существующее демо</a>
+  </aside>
+  <main>
+    <header class="topbar">
+      <div><p>MEG · DEG · TEG</p><h1>Инженерный кабинет DWC</h1></div>
+      <span class="confidential">РАБОЧИЙ ЧЕРНОВИК</span>
+    </header>
+
+    <section id="passport" class="section">
+      <p class="eyebrow">01 / ПАСПОРТ ПРОЕКТА</p>
+      <div id="passport-content" class="passport-grid"></div>
+    </section>
+
+    <section id="inputs" class="section">
+      <p class="eyebrow">02 / ИСХОДНЫЕ ДАННЫЕ ПРЕДПРИЯТИЯ</p>
+      <div class="panel">
+        <form id="input-form" novalidate>
+          <div class="form-grid">
+            <label>Производительность, кг/ч<input name="flow" type="number" min="0.01" step="any" value="1000" required></label>
+            <label>Температура, °C<input name="temperature" type="number" step="any" value="25" required></label>
+            <label>Давление, бар<input name="pressure" type="number" min="0.01" step="any" value="1" required></label>
+            <label>MEG, мас. %<input name="meg" type="number" min="0" max="100" step="any" value="34" required></label>
+            <label>DEG, мас. %<input name="deg" type="number" min="0" max="100" step="any" value="33" required></label>
+            <label>TEG, мас. %<input name="teg" type="number" min="0" max="100" step="any" value="33" required></label>
+            <label>Чистота MEG, мас. %<input name="purityMeg" type="number" min="1" max="100" step="any" value="99.8" required></label>
+            <label>Чистота DEG, мас. %<input name="purityDeg" type="number" min="1" max="100" step="any" value="99.5" required></label>
+            <label>Чистота TEG, мас. %<input name="purityTeg" type="number" min="1" max="100" step="any" value="98.5" required></label>
+            <label>Стоимость паровой/электроэнергии, ₽/ед.<input name="energyCost" type="number" min="0" step="any" value="5" required></label>
+          </div>
+          <p id="input-error" class="error" role="alert" hidden></p>
+          <p class="composition-check" id="composition-check"></p>
+          <button class="button" type="submit">Экспортировать JSON</button>
+        </form>
+      </div>
+    </section>
+
+    <section id="traditional" class="section"><p class="eyebrow">03 / ТРАДИЦИОННАЯ ТЕХНОЛОГИЧЕСКАЯ СХЕМА</p><div class="panel placeholder"><strong>Две последовательные колонны</strong><p>Статус разработки: схема должна быть дополнена оборудованием и узлами на основании заводских данных. Расчётные потоки отсутствуют.</p></div></section>
+    <section id="dwc" class="section"><p class="eyebrow">04 / МОДЕЛЬ DWC</p><div class="panel placeholder"><strong>Petlyuk-эквивалентная схема в DWSIM</strong><p>Статус: in development. Базовые MCP-команды доступны, но строгая DistillationColumn ещё не сходится из-за внутренней структуры потоков колонны.</p><a href="STATUS.md">Открыть актуальный статус интеграции</a></div></section>
+    <section id="comparison" class="section"><p class="eyebrow">05 / СРАВНЕНИЕ РЕЗУЛЬТАТОВ</p><div class="panel"><table><thead><tr><th>Показатель</th><th>Традиционная схема</th><th>DWC</th><th>Уровень подтверждения</th></tr></thead><tbody><tr><td>Капитальные затраты</td><td>Базовый уровень</td><td>Не подтверждено</td><td><span class="badge unconfirmed">Нет протокола</span></td></tr><tr><td>Потребление энергии</td><td>Базовый уровень</td><td>Не подтверждено</td><td><span class="badge unconfirmed">Нет расчёта</span></td></tr><tr><td>Чистота продуктов</td><td>Зависит от проекта</td><td>Целевые значения из ТЗ</td><td><span class="badge unconfirmed">Нет расчёта DWSIM</span></td></tr></tbody></table></div></section>
+    <section id="economics" class="section"><p class="eyebrow">06 / ЭКОНОМИЧЕСКИЙ ЭФФЕКТ</p><div class="panel economics"><div><strong>Сэкономленный энергоресурс</strong><p>Не рассчитан</p></div><div><strong>Срок окупаемости</strong><p>Не рассчитан</p></div><div><strong>Капитальные затраты</strong><p>Не утверждены</p></div><p class="demo-note">Существующие показания ~30% экономии в демо являются упрощёнными демонстрационными ориентирами и не являются подтверждённым эффектом.</p></div></section>
+    <section id="construction" class="section"><p class="eyebrow">07 / КОНСТРУКЦИЯ КОЛОННЫ</p><div class="panel placeholder"><strong>Конструкторские параметры не определены</strong><p>Необходимо согласовать диаметры, тарелки/насадку, разделительную стенку, давления и материалы до передачи в расчётную модель.</p></div></section>
+    <section id="roadmap" class="section"><p class="eyebrow">08 / ПЛАН РЕАЛИЗАЦИИ</p><div class="panel"><ol class="timeline"><li><strong>Исходные данные</strong><span>Согласовать состав, режим и требования к продуктам.</span></li><li><strong>Расчётная модель</strong><span>Настроить термодинамику и воспроизвести сходящийся flowsheet.</span></li><li><strong>Расчётная верификация</strong><span>Проверить массовый и тепловой баланс независимыми расчётами.</span></li><li><strong>Конструкция</strong><span>Сформировать листы данных и спецификацию аппарата.</span></li><li><strong>Эксперимент</strong><span>Провести испытания только после утверждения стенда и методики.</span></li></ol></div></section>
+    <section id="reports" class="section"><p class="eyebrow">09 / РЕЗУЛЬТАТЫ И ОТЧЁТЫ</p><div id="results-list" class="results-list"></div></section>
+  </main>
+</body>
+</html>

@@ -1,0 +1,35 @@
+:root { color-scheme: dark; --bg:#0e1116; --panel:#171b22; --line:#303642; --text:#edf0f5; --muted:#9da6b5; --yellow:#ffd54f; --cyan:#54d6bd; --red:#ff7a7a; }
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { margin:0; background:var(--bg); color:var(--text); font-family:Inter,Segoe UI,Arial,sans-serif; }
+.sidebar { position:fixed; inset:0 auto 0 0; width:245px; border-right:1px solid var(--line); background:#12161c; padding:24px 18px; display:flex; flex-direction:column; z-index:10; }
+.brand { color:var(--text); text-decoration:none; display:flex; align-items:center; gap:10px; margin-bottom:34px; }
+.brand span { background:var(--yellow); color:#111; padding:8px 6px; font-weight:900; }
+.brand strong { font-size:14px; line-height:1.15; }
+.sidebar nav { display:flex; flex-direction:column; gap:3px; }
+.sidebar nav a { color:var(--muted); text-decoration:none; padding:9px 10px; border-radius:6px; font-size:13px; }
+.sidebar nav a:hover,.sidebar nav a.active { color:var(--text); background:#20252e; }
+.demo-link { margin-top:auto; color:var(--yellow); text-decoration:none; font-size:13px; }
+main { margin-left:245px; }
+.topbar { height:92px; border-bottom:1px solid var(--line); display:flex; align-items:center; justify-content:space-between; padding:0 42px; }
+.topbar p,.eyebrow { color:var(--yellow); font-size:11px; letter-spacing:.16em; text-transform:uppercase; }
+.topbar h1 { margin:4px 0 0; font-size:26px; }
+.confidential { border:1px solid #665b32; color:#d9c985; border-radius:4px; padding:7px 9px; font-size:10px; }
+.section { padding:40px 42px; border-bottom:1px solid #252a33; scroll-margin-top:20px; }
+.eyebrow { margin:0 0 18px; }
+.panel { background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:24px; }
+.passport-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; }
+.card { background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:18px; }
+.card h2 { margin:0 0 10px; font-size:16px; }.card p,.card li { color:#c5cad4; line-height:1.55; }.card ul { padding-left:18px; }
+.form-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px; }
+label { color:#bfc6d2; font-size:12px; } input { width:100%; margin-top:7px; background:#0f1318; border:1px solid #39404c; border-radius:5px; color:var(--text); padding:10px; }
+.button { margin-top:18px; border:0; border-radius:5px; background:var(--yellow); color:#171717; padding:11px 14px; font-weight:800; cursor:pointer; }
+.error { color:var(--red); }.composition-check { color:var(--cyan); }
+.placeholder strong { display:block; margin-bottom:8px; }.placeholder p { color:var(--muted); }.placeholder a { color:var(--yellow); }
+table { width:100%; border-collapse:collapse; } th,td { border-bottom:1px solid var(--line); padding:12px 8px; text-align:left; font-size:13px; } th { color:var(--muted); }
+.badge { border-radius:20px; padding:5px 8px; font-size:11px; }.badge.unconfirmed { background:#342a2a; color:#ffc0c0; }.badge.implemented { background:#1d3b34; color:#80dbc7; }.badge.work { background:#3c3520; color:#f2d56b; }
+.economics { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }.economics div { border-right:1px solid var(--line); }.economics p { color:var(--muted); }.demo-note { grid-column:1/-1; color:#e2ca74!important; border-top:1px solid var(--line); padding-top:12px; }
+.timeline { margin:0; padding-left:22px; }.timeline li { padding:8px 0 14px 8px; }.timeline strong { display:block; }.timeline span { color:var(--muted); }
+.result-row { background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:14px 16px; margin-bottom:8px; display:flex; justify-content:space-between; align-items:center; }.result-row p { margin:5px 0 0; color:var(--muted); font-size:13px; }.result-row a { color:var(--yellow); }
+@media (max-width:900px){ .sidebar{position:static;width:auto;height:auto}.sidebar nav{display:grid;grid-template-columns:repeat(2,1fr)} main{margin-left:0}.demo-link{margin-top:15px}.passport-grid,.form-grid{grid-template-columns:1fr 1fr}.topbar{padding:0 20px}.section{padding:30px 20px} }
+@media (max-width:560px){ .sidebar nav,.passport-grid,.form-grid,.economics{grid-template-columns:1fr}.economics div{border-right:0}.topbar{height:auto;padding:18px 20px}.confidential{display:none}.result-row{align-items:flex-start;gap:10px} }
